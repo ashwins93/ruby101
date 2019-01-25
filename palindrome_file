@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'ashwins93_palindrome'
+
+palindromes = File.readlines('phrases.txt').select(&:palindrome?)
+palindromes.each { |line| puts "palindrome detected: #{line}" }
+
+
+File.write('palindromes_file.txt', palindromes.join)
