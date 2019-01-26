@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'open-uri'
+require 'nokogiri'
+
+url = ARGV[0]
+docs = Nokogiri::HTML(open(url).read)
+docs.css('.reference').each(&:remove)
+File.write('spanish_ruby.txt', docs.css('p').map(&:content).join("\n"))
